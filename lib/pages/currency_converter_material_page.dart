@@ -4,8 +4,24 @@ class CurrencyConverterMaterialPage extends StatelessWidget{
 
   const CurrencyConverterMaterialPage({super.key});
 
+
+
+
 @override
 Widget build(BuildContext context){
+
+int result = 0;
+final TextEditingController textEditingController = TextEditingController();
+
+
+final border = OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 2.0,
+                    style: BorderStyle.solid,
+                  ),
+                  borderRadius: BorderRadius.circular(5)
+                );
+
   return Scaffold(
     backgroundColor: Color.fromRGBO(0, 0, 0, 1),
           body: Center(child: 
@@ -20,31 +36,49 @@ Widget build(BuildContext context){
               color: Color.fromRGBO(255, 255, 255, 1)
               ),
             ),
-            TextField(
-                style: TextStyle(
-                  color: Colors.black
-                ),
-                decoration: InputDecoration(
-                hintText: 'Please enter the amount in USD',
-                hintStyle: TextStyle(
-                  color: Colors.black
-                ),
-                prefixIcon: Icon(Icons.monetization_on_outlined),
-                prefixIconColor: Colors.black,
-                filled: true,
-                fillColor: Colors.white,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                    width: 2.0,
-                    style: BorderStyle.solid,
-                    strokeAlign: BorderSide.strokeAlignCenter
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: textEditingController,
+                  style: TextStyle(
+                    color: Colors.black
                   ),
-                  borderRadius: BorderRadius.circular(5),
-                 
+                  decoration: InputDecoration(
+                  hintText: 'Please enter the amount in USD',
+                  hintStyle: TextStyle(
+                    color: Colors.black
+                  ),
+                  prefixIcon: Icon(Icons.monetization_on_outlined),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.red,
+                      width: 2.0,
+                      style: BorderStyle.solid,
+                      strokeAlign: BorderSide.strokeAlignCenter
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  enabledBorder: border,
+                ),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true
                 )
-              )
+              ),
             ),
+
+            TextButton(onPressed: () {
+              debugPrint('Button clicked');
+            }, 
+           style: const ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll<Color>(Colors.white),
+            foregroundColor: WidgetStatePropertyAll(Colors.black),
+            fixedSize: WidgetStatePropertyAll(Size(250, 30))
+           ),
+           child: Text('Convert'),
+            )
           ],
         )
       ) 
