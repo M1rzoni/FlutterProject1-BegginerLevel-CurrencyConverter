@@ -1,33 +1,52 @@
 import 'package:flutter/material.dart';
 
-class CurrencyConverterMaterialPage extends StatefulWidget {
-  const CurrencyConverterMaterialPage({super.key});
-  @override
-  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPage();
+void main() {
+  runApp(const MyApp());
 }
 
-class _CurrencyConverterMaterialPage extends State<CurrencyConverterMaterialPage> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const MaterialApp(
+      home: CurrencyConverterMaterialPage(),
+    );
   }
 }
 
-class CurrencyConverterMaterialPagee extends StatelessWidget {
-  const CurrencyConverterMaterialPagee({super.key});
+class CurrencyConverterMaterialPage extends StatefulWidget {
+  const CurrencyConverterMaterialPage({super.key});
+
+  @override
+  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  void convert() {
+    setState(() {
+      result = double.parse(textEditingController.text) * 81;
+    });
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    double result = 0;
-    final TextEditingController textEditingController = TextEditingController();
-
     final border = OutlineInputBorder(
       borderSide: const BorderSide(width: 2.0, style: BorderStyle.solid),
       borderRadius: BorderRadius.circular(5),
     );
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(0, 0, 0, 1),
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +54,7 @@ class CurrencyConverterMaterialPagee extends StatelessWidget {
           children: [
             Text(
               result.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
                 color: Color.fromRGBO(255, 255, 255, 1),
@@ -48,17 +67,16 @@ class CurrencyConverterMaterialPagee extends StatelessWidget {
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'Please enter the amount in USD',
-                  hintStyle: TextStyle(color: Colors.black),
-                  prefixIcon: Icon(Icons.monetization_on_outlined),
+                  hintStyle: const TextStyle(color: Colors.black),
+                  prefixIcon: const Icon(Icons.monetization_on_outlined),
                   prefixIconColor: Colors.black,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.red,
                       width: 2.0,
                       style: BorderStyle.solid,
-                      strokeAlign: BorderSide.strokeAlignCenter,
                     ),
                     borderRadius: BorderRadius.circular(5),
                   ),
@@ -69,17 +87,14 @@ class CurrencyConverterMaterialPagee extends StatelessWidget {
                 ),
               ),
             ),
-
             TextButton(
-              onPressed: () {
-                result = double.parse(textEditingController.text) * 81;
-              },
-              style: const ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll<Color>(Colors.white),
-                foregroundColor: WidgetStatePropertyAll(Colors.black),
-                fixedSize: WidgetStatePropertyAll(Size(250, 30)),
+              onPressed: convert,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+                minimumSize: const Size(250, 50),
               ),
-              child: Text('Convert'),
+              child: const Text('Convert'),
             ),
           ],
         ),
