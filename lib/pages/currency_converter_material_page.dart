@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
   }
 }
 //ide komit
+
+//Ide komit broj dva za petak samo
 class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
