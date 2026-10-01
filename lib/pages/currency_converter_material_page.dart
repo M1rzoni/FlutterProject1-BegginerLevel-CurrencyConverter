@@ -33,6 +33,7 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
   void convert() {
     setState(() {
       result = double.parse(textEditingController.text) * 81;
+      debugPrint(result.toString());
     });
   }
 
