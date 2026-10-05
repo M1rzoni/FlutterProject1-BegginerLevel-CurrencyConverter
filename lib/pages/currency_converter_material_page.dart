@@ -26,6 +26,7 @@ class CurrencyConverterMaterialPage extends StatefulWidget {
   State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
 }
 
+//OVO JE TO
 class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage> {
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
