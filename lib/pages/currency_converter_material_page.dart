@@ -29,6 +29,7 @@ class CurrencyConverterMaterialPage extends StatefulWidget {
 //OVO JE TO
 //op
 //test
+
 class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage> {
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
@@ -36,6 +37,7 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
   void convert() {
     setState(() {
       result = double.parse(textEditingController.text) * 81;
+      debugPrint(result.toString());
       debugPrint(result.toString());
     });
   }
